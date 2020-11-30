@@ -41,3 +41,16 @@ services:
       - MYSQL_USER=${DB_USER:-phper}
       - MYSQL_PASSWORD=${DB_PASS:-secret}
       - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+
+  python:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./infra/docker/python/Dockerfile
+    working_dir: '/work/backend/python'
+    tty: true
+    volumes:
+      - php-fpm-socket:/var/run/php-fpm
+      - ./backend:/work/backend
+
+

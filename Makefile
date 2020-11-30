@@ -62,6 +62,8 @@ web:
 	docker-compose exec web ash
 app:
 	docker-compose exec app bash
+python:
+	docker-compose exec python bash
 migrate:
 	docker-compose exec app php artisan migrate
 fresh:
